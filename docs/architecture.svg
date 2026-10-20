@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 690" width="1100" height="690" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    </marker>
+    <marker id="gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Background (so it reads in GitHub dark mode too) -->
+  <rect width="1100" height="690" rx="12" fill="#ffffff"/>
+
+  <text x="20" y="30" font-size="20" font-weight="bold" fill="#0f172a">pi-telegram-bot — architecture</text>
+
+  <!-- ===== Internet side ===== -->
+  <text x="20" y="70" font-size="12" font-weight="bold" fill="#64748b" letter-spacing="1">INTERNET</text>
+
+  <!-- Website visitors -->
+  <rect x="20" y="95" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="95" y="120" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">Website visitors</text>
+  <text x="95" y="140" font-size="12" fill="#475569" text-anchor="middle">www.example.com</text>
+
+  <!-- Cloudflare edge -->
+  <rect x="210" y="85" width="190" height="80" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+  <text x="305" y="112" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">Cloudflare edge</text>
+  <text x="305" y="132" font-size="12" fill="#475569" text-anchor="middle">public HTTPS hostnames</text>
+  <text x="305" y="150" font-size="12" fill="#475569" text-anchor="middle">bot.example.com</text>
+
+  <!-- Phone -->
+  <rect x="20" y="300" width="150" height="80" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="95" y="328" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">You</text>
+  <text x="95" y="348" font-size="12" fill="#475569" text-anchor="middle">Telegram app</text>
+  <text x="95" y="366" font-size="12" fill="#475569" text-anchor="middle">/status /reboot /shutdown</text>
+
+  <!-- Telegram -->
+  <rect x="210" y="300" width="190" height="80" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="305" y="328" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">Telegram Bot API</text>
+  <text x="305" y="348" font-size="12" fill="#475569" text-anchor="middle">api.telegram.org</text>
+  <text x="305" y="366" font-size="12" fill="#475569" text-anchor="middle">queues your messages</text>
+
+  <!-- ===== Raspberry Pi ===== -->
+  <rect x="550" y="50" width="520" height="560" rx="14" fill="#f8fafc" stroke="#16a34a" stroke-width="2"/>
+  <text x="570" y="75" font-size="12" font-weight="bold" fill="#16a34a" letter-spacing="1">RASPBERRY PI  (home network, no open ports)</text>
+
+  <!-- cloudflared -->
+  <rect x="575" y="95" width="200" height="70" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+  <text x="675" y="123" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">cloudflared</text>
+  <text x="675" y="143" font-size="12" fill="#475569" text-anchor="middle">tunnel connector</text>
+
+  <!-- Apache -->
+  <rect x="835" y="95" width="210" height="70" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="940" y="123" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">apache2</text>
+  <text x="940" y="143" font-size="12" fill="#475569" text-anchor="middle">your website</text>
+
+  <!-- Bot -->
+  <rect x="575" y="285" width="230" height="120" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <text x="690" y="315" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">pi_bot.py</text>
+  <text x="690" y="336" font-size="12" fill="#475569" text-anchor="middle">systemd service: tgbot</text>
+  <text x="690" y="355" font-size="12" fill="#475569" text-anchor="middle">checks user-ID allowlist</text>
+  <text x="690" y="374" font-size="12" fill="#475569" text-anchor="middle">confirm button before actions</text>
+  <text x="690" y="393" font-size="12" fill="#475569" text-anchor="middle">venv: ~/tgbot</text>
+
+  <!-- env file -->
+  <rect x="575" y="485" width="210" height="80" rx="8" fill="#fefce8" stroke="#ca8a04"/>
+  <text x="680" y="512" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">/etc/tgbot.env</text>
+  <text x="680" y="532" font-size="12" fill="#475569" text-anchor="middle">token, allowed IDs,</text>
+  <text x="680" y="550" font-size="12" fill="#475569" text-anchor="middle">webhook secret (chmod 600)</text>
+
+  <!-- sudoers -->
+  <rect x="835" y="485" width="210" height="80" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="940" y="512" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">sudo /sbin/shutdown</text>
+  <text x="940" y="532" font-size="12" fill="#475569" text-anchor="middle">/etc/sudoers.d/tgbot</text>
+  <text x="940" y="550" font-size="12" fill="#475569" text-anchor="middle">only this command allowed</text>
+
+  <!-- ===== Arrows ===== -->
+  <!-- visitors -> cloudflare -->
+  <line x1="170" y1="125" x2="208" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#gray)"/>
+
+  <!-- cloudflare <-> cloudflared (tunnel) -->
+  <line x1="400" y1="125" x2="573" y2="125" stroke="#ea580c" stroke-width="3" marker-end="url(#orange)"/>
+  <text x="487" y="113" font-size="11" fill="#9a3412" text-anchor="middle">tunnel</text>
+  <text x="487" y="145" font-size="10" fill="#9a3412" text-anchor="middle">(Pi dials out)</text>
+
+  <!-- cloudflared -> apache -->
+  <line x1="775" y1="130" x2="833" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#gray)"/>
+  <text x="804" y="120" font-size="10" fill="#475569" text-anchor="middle">:80</text>
+
+  <!-- phone <-> telegram -->
+  <line x1="172" y1="340" x2="208" y2="340" stroke="#2563eb" stroke-width="2" marker-start="url(#blue)" marker-end="url(#blue)"/>
+  <text x="190" y="330" font-size="10" fill="#1e40af" text-anchor="middle">chat</text>
+
+  <!-- polling: bot -> telegram (outbound long poll) -->
+  <path d="M575,345 L402,345" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#blue)"/>
+  <text x="487" y="334" font-size="11" fill="#1e40af" text-anchor="middle">A: long-poll</text>
+  <text x="487" y="365" font-size="10" fill="#1e40af" text-anchor="middle">getUpdates</text>
+  <text x="487" y="378" font-size="10" fill="#1e40af" text-anchor="middle">(Pi dials out)</text>
+
+  <!-- webhook: telegram -> cloudflare -->
+  <path d="M305,298 L305,167" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 5" fill="none" marker-end="url(#orange)"/>
+  <text x="315" y="225" font-size="11" fill="#9a3412">B: webhook POST</text>
+  <text x="315" y="241" font-size="10" fill="#9a3412">random path +</text>
+  <text x="315" y="255" font-size="10" fill="#9a3412">secret header</text>
+
+  <!-- webhook: cloudflared -> bot -->
+  <path d="M675,165 L675,283" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 5" fill="none" marker-end="url(#orange)"/>
+  <text x="685" y="220" font-size="11" fill="#9a3412">B: 127.0.0.1:8081</text>
+  <text x="685" y="236" font-size="10" fill="#9a3412">localhost only</text>
+
+  <!-- bot -> apache status -->
+  <path d="M805,310 L930,167" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#dark)"/>
+  <text x="880" y="250" font-size="10" fill="#334155">/status checks</text>
+  <text x="880" y="263" font-size="10" fill="#334155">systemctl is-active</text>
+
+  <!-- bot -> env -->
+  <path d="M660,405 L660,483" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#dark)"/>
+  <text x="667" y="448" font-size="10" fill="#334155">reads at start</text>
+
+  <!-- bot -> sudo -->
+  <path d="M790,405 L905,483" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#dark)"/>
+  <text x="862" y="432" font-size="10" fill="#991b1b">/reboot, /shutdown</text>
+  <text x="862" y="445" font-size="10" fill="#991b1b">after you tap "Yes"</text>
+
+  <!-- ===== Legend ===== -->
+  <line x1="40" y1="645" x2="90" y2="645" stroke="#2563eb" stroke-width="3"/>
+  <text x="100" y="649" font-size="12" fill="#0f172a">A: Polling mode (default) — no tunnel needed</text>
+  <line x1="420" y1="645" x2="470" y2="645" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="480" y="649" font-size="12" fill="#0f172a">B: Webhook mode — via Cloudflare Tunnel</text>
+  <line x1="780" y1="645" x2="830" y2="645" stroke="#64748b" stroke-width="2"/>
+  <text x="840" y="649" font-size="12" fill="#0f172a">Website traffic (existing)</text>
+  <text x="40" y="675" font-size="11" fill="#64748b">Only one of A or B is active at a time. In both modes the Pi only makes outbound connections.</text>
+</svg>
