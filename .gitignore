@@ -7,3 +7,10 @@ __pycache__/
 *.pyc
 venv/
 .venv/
+
+# Generated certificates and private keys (certs/gen-certs.sh output)
+certs/*.key
+certs/*.crt
+certs/*.csr
+certs/*.srl
+certs/v3_ext.cnf
